@@ -58,7 +58,7 @@ void Unit::serializeObject(void)
   if (gv < GV_AoEB && isOperation(OP_READ)) Type *= 10;
 
   uint16_t name_len;
-  if (gv > GV_LatestTap && gv < GV_C2 || gv < GV_Tapsa || gv > GV_LatestDE2)
+  if ((gv > GV_LatestTap && gv < GV_C2) || gv < GV_Tapsa || gv > GV_LatestDE2)
     serializeSize<uint16_t>(name_len, Name);
   serialize<int16_t>(ID);
   serialize<uint16_t>(LanguageDLLName);
@@ -79,7 +79,7 @@ void Unit::serializeObject(void)
   if (gv >= GV_AoKE3)
     serialize<int16_t>(DamageSound);
   serialize<int16_t>(DeadUnitID);
-  if (gv >= GV_T6 && gv <= GV_LatestTap || gv >= GV_C7 && gv <= GV_LatestDE2)
+  if ((gv >= GV_T6 && gv <= GV_LatestTap) || (gv >= GV_C7 && gv <= GV_LatestDE2))
     serialize<int16_t>(BloodUnitID);
   serialize<int8_t>(SortNumber);
   serialize<int8_t>(CanBeBuiltOn);
@@ -173,7 +173,7 @@ void Unit::serializeObject(void)
   serialize<int8_t>(OldAttackReaction);
   serialize<int8_t>(ConvertTerrain);
 
-  if (gv > GV_LatestTap && gv < GV_C2 || gv < GV_Tapsa || gv > GV_LatestDE2)
+  if ((gv > GV_LatestTap && gv < GV_C2) || gv < GV_Tapsa || gv > GV_LatestDE2)
   {
     serialize(Name, name_len);
 

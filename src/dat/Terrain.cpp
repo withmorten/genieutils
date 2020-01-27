@@ -65,7 +65,7 @@ unsigned short Terrain::getTerrainCount(GameVersion gv)
     return 110;
   if (gv == GV_Cysion)
     return 100;
-  if (gv == GV_TC)
+  if (gv == GV_TC || gv == GV_UP15)
     return 42;
   return 32;
 }
@@ -87,14 +87,14 @@ void Terrain::serializeObject(void)
   serialize<int8_t>(Enabled);
   serialize<int8_t>(Random);
 
-  if (gv > GV_LatestTap && gv < GV_C2 || gv < GV_Tapsa || gv > GV_LatestDE2)
+  if ((gv > GV_LatestTap && gv < GV_C2) || gv < GV_Tapsa || gv > GV_LatestDE2)
   {
     serialize(Name, getNameSize());
     serialize(Name2, getNameSize());
   }
   else
   {
-    if (gv >= GV_T2 && gv < GV_C2 || gv >= GV_C8 && gv <= GV_LatestDE2)
+    if ((gv >= GV_T2 && gv < GV_C2) || (gv >= GV_C8 && gv <= GV_LatestDE2))
     {
       serialize<int8_t>(IsWater);
       serialize<int8_t>(HideInEditor);

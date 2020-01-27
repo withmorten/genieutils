@@ -49,7 +49,7 @@ void Civ::serializeObject(void)
 
   serialize<int8_t>(PlayerType);
 
-  if (gv > GV_LatestTap && gv < GV_C2 || gv < GV_Tapsa || gv > GV_LatestDE2)
+  if ((gv > GV_LatestTap && gv < GV_C2) || gv < GV_Tapsa || gv > GV_LatestDE2)
   {
     serialize(Name, getNameSize());
   }
