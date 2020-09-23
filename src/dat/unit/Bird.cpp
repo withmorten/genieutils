@@ -74,7 +74,7 @@ void Bird::serializeObject(void)
   serialize<int8_t>(RunPattern);
 
   if (gv < GV_AoK // 11.24
-  || gv >= GV_C15 && gv <= GV_LatestDE2)
+  || (gv >= GV_C15 && gv <= GV_LatestDE2))
   {
     uint16_t task_count;
     serializeSize<uint16_t>(task_count, TaskList.size());
