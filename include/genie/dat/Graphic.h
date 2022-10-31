@@ -96,7 +96,6 @@ public:
 
   /// Frame rate in seconds. (Delay between frames)
   float FrameDuration = 0;
-  float AnimationDuration = 0;
 
   /// Time to wait until the animation sequence is started again.
   float ReplayDelay = 0;

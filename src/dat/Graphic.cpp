@@ -112,9 +112,7 @@ void Graphic::serializeObject(void)
   serialize<uint16_t>(FrameCount);
   serialize<uint16_t>(AngleCount);
   serialize<float>(SpeedMultiplier);
-  FrameDuration = FrameCount ? AnimationDuration / FrameCount : 0;
   serialize<float>(FrameDuration);
-  AnimationDuration = FrameDuration * FrameCount;
   serialize<float>(ReplayDelay);
   serialize<int8_t>(SequenceType);
   serialize<int16_t>(ID);
