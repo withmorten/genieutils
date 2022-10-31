@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "genie/dat/unit/Creatable.h"
+#include "genie/dat/unit/Type70.h"
 
 namespace genie
 {
@@ -26,27 +26,27 @@ namespace genie
 namespace unit
 {
 
-Creatable::Creatable() : //Type50(),
+Tribe_Combat::Tribe_Combat() : //Combat(),
   ResourceCosts(3)
 {
 }
 
-Creatable::~Creatable()
+Tribe_Combat::~Tribe_Combat()
 {
 }
 
 //------------------------------------------------------------------------------
-void Creatable::setGameVersion(GameVersion gv)
+void Tribe_Combat::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-unsigned short Creatable::getResourceCostsSize()
+unsigned short Tribe_Combat::getResourceCostsSize()
 {
   return 3;
 }
 
-void Creatable::serializeObject(void)
+void Tribe_Combat::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
 

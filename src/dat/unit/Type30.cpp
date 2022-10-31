@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "genie/dat/unit/DeadFish.h"
+#include "genie/dat/unit/Type30.h"
 
 namespace genie
 {
@@ -26,21 +26,21 @@ namespace genie
 namespace unit
 {
 
-DeadFish::DeadFish() //: Unit()
+Moving::Moving() //: Unit()
 {
 }
 
-DeadFish::~DeadFish()
+Moving::~Moving()
 {
 }
 
 //------------------------------------------------------------------------------
-void DeadFish::setGameVersion(GameVersion gv)
+void Moving::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-void DeadFish::serializeObject(void)
+void Moving::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
 

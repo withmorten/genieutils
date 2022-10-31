@@ -2,7 +2,7 @@
     geniedat - A library for reading and writing data files of genie
                engine games.
     Copyright (C) 2011 - 2013  Armin Preiml
-    Copyright (C) 2011 - 2016  Mikko "Tapsa" P
+    Copyright (C) 2011 - 2020  Mikko "Tapsa" P
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -18,10 +18,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef GENIE_PROJECTILE_H
-#define GENIE_PROJECTILE_H
+#ifndef GENIE_BIRD_H
+#define GENIE_BIRD_H
 
 #include "genie/file/ISerializable.h"
+#include "../UnitCommand.h"
 
 namespace genie
 {
@@ -29,30 +30,28 @@ namespace genie
 namespace unit
 {
 
-class Projectile : public ISerializable
+class Action : public ISerializable
 {
 public:
-  Projectile();
-  virtual ~Projectile();
+  Action();
+  virtual ~Action();
   virtual void setGameVersion(GameVersion gv);
+  unsigned short getDropSiteCount(void);
 
-  int8_t ProjectileType = 0;
-  int8_t SmartMode = 0;
-  int8_t HitMode = 0;
+  int16_t DefaultTaskID = -1;
+  float SearchRadius = 0;
+  float WorkRate = 0;
+  std::vector<int16_t> DropSites;
 
-  /// Affects the graphics so that they pass through the target instead of stopping
-  /// 1 allows the projectile to pass through, a value of 0 stops the projectile.
-  /// Only affects graphic not pass through damage.
-  int8_t VanishMode = 0;
-
-  int8_t AreaEffectSpecials = 0;
-
-  /// Determines the arc a projectile follows.
-  /// Enter a non-negative value.
-  /// The higher the value, the higher the arc will be that the projectile travels.
-  /// The graphics do not change, so a scorpion bolt will still always point forwards,
-  /// even if it has a very high arc.
-  float ProjectileArc = 0;
+  /// If activated unit switches villager types
+  int8_t TaskSwapGroup = 0;
+  int16_t AttackSound = -1;
+  int16_t MoveSound = -1;
+  uint32_t WwiseAttackSoundID = 0;
+  uint32_t WwiseMoveSoundID = 0;
+  /// Some animals have this.
+  int8_t RunPattern = 0;
+  std::vector<Task> TaskList;//only in aoe/ror
 
 protected:
   virtual void serializeObject(void);
@@ -62,4 +61,4 @@ protected:
 
 }
 
-#endif // GENIE_PROJECTILE_H
+#endif // GENIE_BIRD_H

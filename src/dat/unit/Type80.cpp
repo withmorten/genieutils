@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "genie/dat/unit/Building.h"
+#include "genie/dat/unit/Type80.h"
 
 namespace genie
 {
@@ -26,23 +26,23 @@ namespace genie
 namespace unit
 {
 
-Building::Building() : //Creatable(),
+Tribe_Building::Tribe_Building() : //Creatable(),
   Annexes(BUILDING_ANNEXES_SIZE),
   LootingTable(LOOTABLE_RES_COUNT)
 {
 }
 
-Building::~Building()
+Tribe_Building::~Tribe_Building()
 {
 }
 
 //------------------------------------------------------------------------------
-void Building::setGameVersion(GameVersion gv)
+void Tribe_Building::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-void Building::serializeObject(void)
+void Tribe_Building::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
 

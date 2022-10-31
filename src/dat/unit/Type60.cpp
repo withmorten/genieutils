@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "genie/dat/unit/Projectile.h"
+#include "genie/dat/unit/Type60.h"
 
 namespace genie
 {
@@ -26,21 +26,21 @@ namespace genie
 namespace unit
 {
 
-Projectile::Projectile() //: Type50()
+Missile::Missile() //: Combat()
 {
 }
 
-Projectile::~Projectile()
+Missile::~Missile()
 {
 }
 
 //------------------------------------------------------------------------------
-void Projectile::setGameVersion(GameVersion gv)
+void Missile::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-void Projectile::serializeObject(void)
+void Missile::serializeObject(void)
 {
   serialize<int8_t>(ProjectileType);
   serialize<int8_t>(SmartMode);
