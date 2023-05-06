@@ -69,7 +69,7 @@ void TechTree::serializeObject(void)
    serializeSize<uint16_t>(unit_count, UnitConnections.size());
   else
   {
-    uint8_t tbc;
+    uint8_t tbc = 0;
     serializeSize<uint8_t>(tbc, UnitConnections.size());
     unit_count = tbc;
   }

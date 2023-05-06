@@ -22,7 +22,6 @@
 #include "genie/script/ScnFile.h"
 
 #include <math.h>
-#include <malloc.h>
 //#include <boost/iostreams/copy.hpp>
 
 namespace genie
@@ -61,10 +60,10 @@ void ScnFile::extractRaw(const char *from, const char *to)
   ifs.read(reinterpret_cast<char *>(&headerLen), 4);
   ofs.write(reinterpret_cast<char *>(&headerLen), 4);
 
-  char *header = (char *)calloc(headerLen, 1);
+  std::vector<char> header(headerLen);
 
-  ifs.read(header, headerLen);
-  ofs.write(header, headerLen);
+  ifs.read(header.data(), headerLen);
+  ofs.write(header.data(), headerLen);
 
   Compressor::decompress(ifs, ofs);
 
@@ -76,8 +75,6 @@ void ScnFile::extractRaw(const char *from, const char *to)
 
   ifs.close();
   ofs.close();
-
-  free(header);
 }
 
 //------------------------------------------------------------------------------
