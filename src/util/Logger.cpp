@@ -84,7 +84,7 @@ void Logger::log(Logger::LogLevel loglevel, va_list args, const char *msg)
   if (loglevel >= Logger::LOG_LEVEL)
   {
     char msgBuf[1024];                  //TODO: reserve memory on time
-    vsprintf(msgBuf, msg, args);
+    vsnprintf(msgBuf, sizeof(msgBuf), msg, args);
 
     if (out_)
       *out_ << getLogLevelName(loglevel) << ": " << msgBuf << std::endl;

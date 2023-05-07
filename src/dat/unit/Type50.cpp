@@ -2,7 +2,7 @@
     genie/dat - A library for reading and writing data files of genie
                engine games.
     Copyright (C) 2011 - 2013  Armin Preiml
-    Copyright (C) 2011 - 2017  Mikko "Tapsa" P
+    Copyright (C) 2011 - 2021  Mikko "Tapsa" P
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -49,7 +49,7 @@ void Combat::serializeObject(void)
   if (gv < GV_TC // 11.52
   && (gv > GV_LatestTap || gv < GV_T3))
   {
-    uint8_t defarmor_byte = BaseArmor;
+    uint8_t defarmor_byte = static_cast<uint8_t>(BaseArmor);
     serialize<uint8_t>(defarmor_byte);
     BaseArmor = defarmor_byte;
   }
@@ -66,6 +66,10 @@ void Combat::serializeObject(void)
   serializeSub<unit::AttackOrArmor>(Armours, attack_count);
 
   serialize<int16_t>(DefenseTerrainBonus);
+  if (gv <= GV_LatestDE2 && gv >= GV_C16)
+  {
+    serialize<float>(BonusDamageResistance);
+  }
   serialize<float>(MaxRange);
   serialize<float>(BlastWidth);
   serialize<float>(ReloadTime);
