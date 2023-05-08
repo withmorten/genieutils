@@ -40,8 +40,8 @@ enum GameVersion
   GV_AoKB, // 11.05
   GV_AoK, // 11.5
   GV_TC, // 11.76
+  GV_UP, // 11.76 with UserPatch
   GV_TCV, // Terrain patch
-  GV_UP15, // 11.76 with UserPatch 1.5
   GV_Cysion, GV_C2, GV_C3, GV_C4, GV_CK, GV_C5, GV_C6, GV_C7, GV_C8, GV_C9, GV_C10, GV_C11, GV_C12, GV_C13, GV_C14, GV_C15, GV_C16,
   // 12.0 - 12.74
   GV_SWGB, // 1.0
