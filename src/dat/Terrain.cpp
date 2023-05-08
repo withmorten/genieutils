@@ -2,7 +2,7 @@
     genie/dat - A library for reading and writing data files of genie
                engine games.
     Copyright (C) 2011 - 2013  Armin Preiml
-    Copyright (C) 2011 - 2018  Mikko "Tapsa" P
+    Copyright (C) 2011 - 2021  Mikko "Tapsa" P
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -41,7 +41,8 @@ void Terrain::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 
-  Borders.resize(getTerrainCount(gv), 0);
+  if (gv != GV_CCV && gv != GV_TCV)
+    Borders.resize(getTerrainCount(gv), 0);
 }
 
 //------------------------------------------------------------------------------
@@ -55,8 +56,10 @@ unsigned short Terrain::getTerrainCount(GameVersion gv)
 {
   if (terrain_count_)
     return terrain_count_;
-  if (gv >= GV_SWGB)
+  if (gv == GV_SWGB || gv == GV_CC)
     return 55;
+  if (gv == GV_CCV || gv == GV_TCV)
+     return 252;
   if (gv >= GV_T2 && gv <= GV_LatestTap)
     return 96;
   if (gv >= GV_C8 && gv <= GV_LatestDE2)
@@ -65,7 +68,7 @@ unsigned short Terrain::getTerrainCount(GameVersion gv)
     return 110;
   if (gv == GV_Cysion)
     return 100;
-  if (gv == GV_TC || gv == GV_UP15)
+  if (gv == GV_TC)
     return 42;
   return 32;
 }
@@ -87,14 +90,14 @@ void Terrain::serializeObject(void)
   serialize<int8_t>(Enabled);
   serialize<int8_t>(Random);
 
-  if ((gv > GV_LatestTap && gv < GV_C2) || gv < GV_Tapsa || gv > GV_LatestDE2)
+  if (gv > GV_LatestTap && gv < GV_C2 || gv < GV_Tapsa || gv > GV_LatestDE2)
   {
     serialize(Name, getNameSize());
     serialize(Name2, getNameSize());
   }
   else
   {
-    if ((gv >= GV_T2 && gv < GV_C2) || (gv >= GV_C8 && gv <= GV_LatestDE2))
+    if (gv >= GV_T2 && gv < GV_C2 || gv >= GV_C8 && gv <= GV_LatestDE2)
     {
       serialize<int8_t>(IsWater);
       serialize<int8_t>(HideInEditor);
@@ -126,7 +129,7 @@ void Terrain::serializeObject(void)
       {
         serialize<uint32_t>(WwiseSoundID);
       }
-    serialize<uint32_t>(WwiseSoundStopID);
+      serialize<uint32_t>(WwiseSoundStopID);
     }
   }
 
@@ -167,9 +170,24 @@ void Terrain::serializeObject(void)
   else
   {
     if (isOperation(OP_READ))
-      serialize<int16_t>(Borders, getTerrainCount(gv));
+    {
+      switch (gv)
+      {
+        case GV_CCV:
+          serialize<int16_t>(Borders, 55);
+          break;
+        case GV_TCV:
+          serialize<int16_t>(Borders, 42);
+          break;
+        default:
+          serialize<int16_t>(Borders, getTerrainCount(gv));
+          break;
+      }
+    }
     else
+    {
       serialize<int16_t>(Borders, Borders.size());
+    }
   }
   serialize<int16_t>(TerrainUnitID, TERRAIN_UNITS_SIZE);
   serialize<int16_t>(TerrainUnitDensity, TERRAIN_UNITS_SIZE);

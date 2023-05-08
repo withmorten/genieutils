@@ -121,7 +121,7 @@ void ISerializable::writeString(std::string str, size_t len)
 
   str.copy(buf, len);
 
-  for (size_t i=str.size(); i < len; i++)
+  for (size_t i = str.size(); i < len; i++)
     buf[i] = 0; // fill up with 0
 
   ostr_->write(buf, len);
