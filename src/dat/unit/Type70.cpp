@@ -26,27 +26,27 @@ namespace genie
 namespace unit
 {
 
-Tribe_Combat::Tribe_Combat() : //Combat(),
+Creatable::Creatable() : //Type50(),
   ResourceCosts(3)
 {
 }
 
-Tribe_Combat::~Tribe_Combat()
+Creatable::~Creatable()
 {
 }
 
 //------------------------------------------------------------------------------
-void Tribe_Combat::setGameVersion(GameVersion gv)
+void Creatable::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-unsigned short Tribe_Combat::getResourceCostsSize()
+unsigned short Creatable::getResourceCostsSize()
 {
   return 3;
 }
 
-void Tribe_Combat::serializeObject(void)
+void Creatable::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
 

@@ -26,16 +26,16 @@ namespace genie
 namespace unit
 {
 
-Action::Action() //: Moving()
+Bird::Bird() //: DeadFish()
 {
 }
 
-Action::~Action()
+Bird::~Bird()
 {
 }
 
 //------------------------------------------------------------------------------
-void Action::setGameVersion(GameVersion gv)
+void Bird::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 
@@ -44,7 +44,7 @@ void Action::setGameVersion(GameVersion gv)
   updateGameVersion(TaskList);
 }
 
-unsigned short Action::getDropSiteCount(void)
+unsigned short Bird::getDropSiteCount(void)
 {
   GameVersion gv = getGameVersion();
   if (gv >= GV_C15 && gv <= GV_LatestDE2)
@@ -54,7 +54,7 @@ unsigned short Action::getDropSiteCount(void)
   return 1;
 }
 
-void Action::serializeObject(void)
+void Bird::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
 

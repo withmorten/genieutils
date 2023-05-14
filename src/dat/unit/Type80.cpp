@@ -26,23 +26,23 @@ namespace genie
 namespace unit
 {
 
-Tribe_Building::Tribe_Building() : //Creatable(),
+Building::Building() : //Creatable(),
   Annexes(BUILDING_ANNEXES_SIZE),
   LootingTable(LOOTABLE_RES_COUNT)
 {
 }
 
-Tribe_Building::~Tribe_Building()
+Building::~Building()
 {
 }
 
 //------------------------------------------------------------------------------
-void Tribe_Building::setGameVersion(GameVersion gv)
+void Building::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-void Tribe_Building::serializeObject(void)
+void Building::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
 

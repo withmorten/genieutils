@@ -30,11 +30,11 @@ namespace genie
 namespace unit
 {
 
-class Action : public ISerializable
+class Bird : public ISerializable
 {
 public:
-  Action();
-  virtual ~Action();
+  Bird();
+  virtual ~Bird();
   virtual void setGameVersion(GameVersion gv);
   unsigned short getDropSiteCount(void);
 

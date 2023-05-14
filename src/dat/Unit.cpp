@@ -39,12 +39,12 @@ void Unit::setGameVersion(GameVersion gv)
   ISerializable::setGameVersion(gv);
 
   updateGameVersion(DamageGraphics);
-  Moving.setGameVersion(gv);
-  Action.setGameVersion(gv);
-  Combat.setGameVersion(gv);
-  Missile.setGameVersion(gv);
-  Tribe_Combat.setGameVersion(gv);
-  Tribe_Building.setGameVersion(gv);
+  DeadFish.setGameVersion(gv);
+  Bird.setGameVersion(gv);
+  Type50.setGameVersion(gv);
+  Projectile.setGameVersion(gv);
+  Creatable.setGameVersion(gv);
+  Building.setGameVersion(gv);
 }
 
 //------------------------------------------------------------------------------
@@ -212,31 +212,31 @@ void Unit::serializeObject(void)
   if (gv >= GV_T5 && gv <= GV_LatestTap)
     serialize<int16_t>(TelemetryID);
 
-  if (Type == UT_Tribe_Tree_Old)
+  if (Type == UT_AoeTrees)
     return;
 
-  if (Type >= UT_Animated)
+  if (Type >= UT_Flag)
     serialize<float>(Speed);
   else
     return;
 
-  if (Type >= UT_Moving)
-    serialize<ISerializable>(Moving);
+  if (Type >= UT_Dead_Fish)
+    serialize<ISerializable>(DeadFish);
 
-  if (Type >= UT_Action)
-    serialize<ISerializable>(Action);
+  if (Type >= UT_Bird)
+    serialize<ISerializable>(Bird);
 
-  if (Type >= UT_Combat)
-    serialize<ISerializable>(Combat);
+  if (Type >= UT_Combatant)
+    serialize<ISerializable>(Type50);
 
-  if (Type == UT_Missile)
-    serialize<ISerializable>(Missile);
+  if (Type == UT_Projectile)
+    serialize<ISerializable>(Projectile);
 
-  if (Type >= UT_Tribe_Combat)
-    serialize<ISerializable>(Tribe_Combat);
+  if (Type >= UT_Creatable)
+    serialize<ISerializable>(Creatable);
 
-  if (Type == UT_Tribe_Building)
-    serialize<ISerializable>(Tribe_Building);
+  if (Type == UT_Building)
+    serialize<ISerializable>(Building);
 }
 
 }

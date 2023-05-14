@@ -51,11 +51,11 @@ private:
   }
 };
 
-class Tribe_Building : public ISerializable
+class Building : public ISerializable
 {
 public:
-  Tribe_Building();
-  virtual ~Tribe_Building();
+  Building();
+  virtual ~Building();
   virtual void setGameVersion(GameVersion gv);
 
   int16_t ConstructionGraphicID = -1;

@@ -26,16 +26,16 @@ namespace genie
 namespace unit
 {
 
-Combat::Combat() //: Action()
+Type50::Type50() //: Bird()
 {
 }
 
-Combat::~Combat()
+Type50::~Type50()
 {
 }
 
 //------------------------------------------------------------------------------
-void Combat::setGameVersion(GameVersion gv)
+void Type50::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 
@@ -43,7 +43,7 @@ void Combat::setGameVersion(GameVersion gv)
   updateGameVersion(Armours);
 }
 
-void Combat::serializeObject(void)
+void Type50::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
   if (gv < GV_TC // 11.52
