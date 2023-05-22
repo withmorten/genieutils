@@ -86,16 +86,6 @@ public:
   inline int32_t getHotspotY(void) const { return hotspot_y_; }
 
   //----------------------------------------------------------------------------
-  /// Get layer hotspot x.
-  //
-  inline int32_t getLayerHotspotX(void) const { return layer_hotspot_x; }
-
-  //----------------------------------------------------------------------------
-  /// Get layer hotspot y.
-  //
-  inline int32_t getLayerHotspotY(void) const { return layer_hotspot_y; }
-
-  //----------------------------------------------------------------------------
   /// Get the hotspot of the frame. The Hotspot is the isometric center of
   /// the object presented by this frame.
 
