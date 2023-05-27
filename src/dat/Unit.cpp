@@ -68,10 +68,12 @@ void Unit::serializeObject(void)
   }
   else
   {
+    LanguageDLLNameU16 = LanguageDLLName;
     serialize<int16_t>(LanguageDLLNameU16);
     LanguageDLLName = LanguageDLLNameU16;
     if (gv >= GV_MATT)
     {
+      LanguageDLLCreationU16 = LanguageDLLCreation;
       serialize<int16_t>(LanguageDLLCreationU16);
       LanguageDLLCreation = LanguageDLLCreationU16;
     }

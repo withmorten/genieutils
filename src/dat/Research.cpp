@@ -75,8 +75,12 @@ void Tech::serializeObject(void)
     }
     else
     {
+      LanguageDLLNameU16 = LanguageDLLName;
+      LanguageDLLDescriptionU16 = LanguageDLLDescription;
+
       serialize<int16_t>(LanguageDLLNameU16);
       serialize<int16_t>(LanguageDLLDescriptionU16);
+
       LanguageDLLName = LanguageDLLNameU16;
       LanguageDLLDescription = LanguageDLLDescriptionU16;
     }

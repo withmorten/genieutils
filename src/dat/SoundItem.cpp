@@ -60,6 +60,7 @@ void SoundItem::serializeObject(void)
 
   if (gv < GV_TEST)
   {
+    ResourceIdS16 = ResourceID;
     serialize<int16_t>(ResourceIdS16);
     ResourceID = ResourceIdS16;
   }

@@ -42,6 +42,9 @@ void PlayerColour::serializeObject(void)
 {
   if (getGameVersion() < GV_AoKE3)
   {
+    IdS16 = ID;
+    MinimapColorU8 = MinimapColour;
+
     serialize(Name, NAME_SIZE);
     serialize<int16_t>(IdS16);
     serialize<int16_t>(ResourceID);

@@ -105,6 +105,9 @@ void Terrain::serializeObject(void)
     }
     if (gv >= GV_T2 && gv < GV_C2)
     {
+      BlendPriorityS16 = BlendPriority;
+      BlendTypeS16 = BlendType;
+
       serialize<int16_t>(BlendPriorityS16);
       serialize<int16_t>(BlendTypeS16);
 

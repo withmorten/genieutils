@@ -84,6 +84,7 @@ void Graphic::serializeObject(void)
 
   if (gv < GV_TEST)
   {
+    ResourceIdS16 = SLP;
     serialize<int16_t>(ResourceIdS16);
     SLP = ResourceIdS16;
   }
