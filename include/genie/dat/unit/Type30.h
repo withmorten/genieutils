@@ -29,12 +29,12 @@ namespace genie
 namespace unit
 {
 
-/// Attributes for Unit of type >= DeadFish.
-class DeadFish : public ISerializable
+/// Attributes for Unit of type >= Moving.
+class Moving : public ISerializable
 {
 public:
-  DeadFish();
-  virtual ~DeadFish();
+  Moving();
+  virtual ~Moving();
   virtual void setGameVersion(GameVersion gv);
 
   int16_t WalkingGraphic = -1;

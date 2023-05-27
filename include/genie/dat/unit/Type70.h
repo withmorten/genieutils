@@ -30,11 +30,11 @@ namespace genie
 namespace unit
 {
 
-class Creatable : public ISerializable
+class Tribe_Combat : public ISerializable
 {
 public:
-  Creatable();
-  virtual ~Creatable();
+  Tribe_Combat();
+  virtual ~Tribe_Combat();
   virtual void setGameVersion(GameVersion gv);
 
   static unsigned short getResourceCostsSize();

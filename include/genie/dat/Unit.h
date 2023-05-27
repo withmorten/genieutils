@@ -39,38 +39,38 @@ namespace genie
 enum UnitType
 {
   /// Basic units like rubble and flares.
-  UT_EyeCandy = 10,
+  UT_Static = 10,
 
   /// Trees, used to be 90?
-  UT_Trees = 15,
+  UT_Tribe_Tree = 15,
 
   /// With Speed but mostly flags.
-  UT_Flag = 20,
+  UT_Animated = 20,
 
-  /// Only one unit has this type. AOK, DOPL (id 243) same properties as UT_Flag
-  UT_25 = 25,
+  /// Only one unit has this type. AOK, DOPL (id 243) same properties as UT_Animated
+  UT_Doppleganger = 25,
 
   /// Dead and fish units. It seems to be unused in SWGB as units just explode
   /// and do not leave carcasses.
-  UT_Dead_Fish = 30,
+  UT_Moving = 30,
 
   /// Only birds in aoe and ror are of this type.
-  UT_Bird = 40,
+  UT_Action = 40,
 
   /// Shared class inherited by combat objects.
-  UT_Combatant = 50,
+  UT_Combat = 50,
 
   /// Projectiles
-  UT_Projectile = 60,
+  UT_Missile = 60,
 
   /// Units that can be created or trained like Army, Villagers and Ships.
-  UT_Creatable = 70,
+  UT_Tribe_Combat = 70,
 
   /// Buildings
-  UT_Building = 80,
+  UT_Tribe_Building = 80,
 
   /// Trees in aoe and ror are of this type
-  UT_AoeTrees = 90
+  UT_Tribe_Tree_Old = 90
 };
 
 //------------------------------------------------------------------------------
@@ -267,17 +267,17 @@ public:
 
   float Speed = 0;
 
-  unit::DeadFish DeadFish;
+  unit::Moving Moving;
 
-  unit::Bird Bird;
+  unit::Action Action;
 
-  unit::Type50 Type50;
+  unit::Combat Combat;
 
-  unit::Projectile Projectile;
+  unit::Missile Missile;
 
-  unit::Creatable Creatable;
+  unit::Tribe_Combat Tribe_Combat;
 
-  unit::Building Building;
+  unit::Tribe_Building Tribe_Building;
 
 protected:
   virtual void serializeObject(void);

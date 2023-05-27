@@ -31,11 +31,11 @@ namespace genie
 namespace unit
 {
 
-class Type50 : public ISerializable
+class Combat : public ISerializable
 {
 public:
-  Type50();
-  virtual ~Type50();
+  Combat();
+  virtual ~Combat();
   virtual void setGameVersion(GameVersion gv);
 
   union

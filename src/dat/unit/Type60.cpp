@@ -26,21 +26,21 @@ namespace genie
 namespace unit
 {
 
-Projectile::Projectile() //: Type50()
+Missile::Missile() //: Combat()
 {
 }
 
-Projectile::~Projectile()
+Missile::~Missile()
 {
 }
 
 //------------------------------------------------------------------------------
-void Projectile::setGameVersion(GameVersion gv)
+void Missile::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 }
 
-void Projectile::serializeObject(void)
+void Missile::serializeObject(void)
 {
   serialize<uint8_t>(ProjectileType);
   serialize<uint8_t>(SmartMode);
