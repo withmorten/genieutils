@@ -36,8 +36,8 @@ public:
   virtual ~AttackOrArmor();
   virtual void setGameVersion(GameVersion gv);
 
-  int16_t Class = -1;
-  int16_t Amount = 0;
+  int16_t Class = -1; // type
+  int16_t Amount = 0; // value
 
 private:
   virtual void serializeObject(void);

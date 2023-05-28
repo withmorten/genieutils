@@ -41,11 +41,6 @@ void Tribe_Combat::setGameVersion(GameVersion gv)
   ISerializable::setGameVersion(gv);
 }
 
-unsigned short Tribe_Combat::getResourceCostsSize()
-{
-  return 3;
-}
-
 void Tribe_Combat::serializeObject(void)
 {
   GameVersion gv = getGameVersion();
@@ -96,7 +91,9 @@ void Tribe_Combat::serializeObject(void)
 
       serialize<float>(TotalProjectiles);
       serialize<uint8_t>(MaxTotalProjectiles);
-      serialize<float>(ProjectileSpawningArea, 3);
+      serialize<float>(ProjectileSpawningAreaX);
+      serialize<float>(ProjectileSpawningAreaY);
+      serialize<float>(ProjectileSpawningAreaAdjustment);
       serialize<int32_t>(SecondaryProjectileUnit); // 9.08
       // 9.2
       {

@@ -26,17 +26,14 @@ namespace genie
 {
 
 //------------------------------------------------------------------------------
-/// Template class describing quantities of Resources.
-/// It is a template class because different objects need different datatypes
-/// for ResourceUsage members.
+/// Class describing quantities of Resources.
 //
-template<typename T, typename A, typename E>
-class ResourceUsage : public ISerializable
+class ResourceCost : public ISerializable
 {
 public:
-  ResourceUsage() {}
+  ResourceCost() {}
 
-  virtual ~ResourceUsage() {}
+  virtual ~ResourceCost() {}
 
   virtual void setGameVersion(GameVersion gv)
   {
@@ -44,20 +41,22 @@ public:
   }
 
   /// Resource ID
-  T Type = -1;
+  int16_t Type = -1;
 
   /// Amount of the resource available/required/used
-  A Amount = 0;
+  int16_t Amount = 0;
 
   /// Bool that determines whether it is paid or only needed.
-  E Flag = 0;
+  uint8_t Flag = 0;
 
 private:
   virtual void serializeObject(void)
   {
-    serialize<T>(Type);
-    serialize<A>(Amount);
-    serialize<E>(Flag);
+    serialize<int16_t>(Type);
+    serialize<int16_t>(Amount);
+    serialize<uint8_t>(Flag);
+    uint8_t Nothing = 0;
+    serialize<uint8_t>(Nothing);
   }
 };
 

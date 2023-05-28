@@ -18,8 +18,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef GENIE_BIRD_H
-#define GENIE_BIRD_H
+#ifndef GENIE_TYPE40_H
+#define GENIE_TYPE40_H
 
 #include "genie/file/ISerializable.h"
 #include "../UnitCommand.h"
@@ -36,22 +36,23 @@ public:
   Action();
   virtual ~Action();
   virtual void setGameVersion(GameVersion gv);
-  unsigned short getDropSiteCount(void);
 
-  int16_t DefaultTaskID = -1;
-  float SearchRadius = 0;
-  float WorkRate = 0;
-  std::vector<int16_t> DropSites;
+  int16_t DefaultTaskID = -1; // default_task
+  float SearchRadius = 0; // search_radius
+  float WorkRate = 0; // work_rate
+  int16_t DropSite = -1; // drop_site
+  int16_t BackupDropSite = -1; // backup_drop_site
+  int16_t BackupDropSite2 = -1;
 
   /// If activated unit switches villager types
-  uint8_t TaskSwapGroup = 0;
-  int16_t AttackSound = -1;
-  int16_t MoveSound = -1;
+  uint8_t TaskSwapGroup = 0; // task_by_group
+  int16_t AttackSound = -1; // command_sound
+  int16_t MoveSound = -1; // move_sound
   uint32_t WwiseAttackSoundID = 0;
   uint32_t WwiseMoveSoundID = 0;
   /// Some animals have this.
-  uint8_t RunPattern = 0;
-  std::vector<Task> TaskList;//only in aoe/ror
+  uint8_t RunPattern = 0; // run_pattern
+  std::vector<Task> TaskList; // tasks, only in aoe/ror
 
 protected:
   virtual void serializeObject(void);
@@ -61,4 +62,4 @@ protected:
 
 }
 
-#endif // GENIE_BIRD_H
+#endif // GENIE_TYPE40_H

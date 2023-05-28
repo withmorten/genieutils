@@ -27,7 +27,9 @@ namespace unit
 {
 
 Tribe_Building::Tribe_Building() : //Tribe_Combat(),
-  Annexes(BUILDING_ANNEXES_SIZE),
+  AnnexUnitID(BUILDING_ANNEXES_SIZE, -1),
+  AnnexMisplacementX(BUILDING_ANNEXES_SIZE),
+  AnnexMisplacementY(BUILDING_ANNEXES_SIZE),
   LootingTable(LOOTABLE_RES_COUNT)
 {
 }
@@ -80,7 +82,12 @@ void Tribe_Building::serializeObject(void)
   if (gv >= GV_AoKE3)
   {
     serialize<uint8_t>(CanBurn);
-    serializeSub<unit::BuildingAnnex>(Annexes, BUILDING_ANNEXES_SIZE); // 40 bytes
+    for (unsigned i=0; i<BUILDING_ANNEXES_SIZE; i++)
+    {
+      serialize<int16_t>(AnnexUnitID[i]);
+      serialize<float>(AnnexMisplacementX[i]);
+      serialize<float>(AnnexMisplacementY[i]);
+    }
     if (gv >= GV_AoKA)
       serialize<int16_t>(HeadUnit); // 9.89
     serialize<int16_t>(TransformUnit);

@@ -39,19 +39,7 @@ void Action::setGameVersion(GameVersion gv)
 {
   ISerializable::setGameVersion(gv);
 
-  DropSites.resize(getDropSiteCount(), -1);
-
   updateGameVersion(TaskList);
-}
-
-unsigned short Action::getDropSiteCount(void)
-{
-  GameVersion gv = getGameVersion();
-  if (gv >= GV_C15 && gv <= GV_LatestDE2)
-    return 3;
-  if (gv >= GV_TEST)
-    return 2;
-  return 1;
 }
 
 void Action::serializeObject(void)
@@ -61,7 +49,11 @@ void Action::serializeObject(void)
   serialize<int16_t>(DefaultTaskID);
   serialize<float>(SearchRadius);
   serialize<float>(WorkRate);
-  serialize<int16_t>(DropSites, getDropSiteCount());
+  serialize<int16_t>(DropSite);
+  if (gv >= GV_TEST)
+    serialize<int16_t>(BackupDropSite);
+  if (gv >= GV_C15 && gv <= GV_LatestDE2)
+    serialize<int16_t>(BackupDropSite2);
   serialize<uint8_t>(TaskSwapGroup);
   serialize<int16_t>(AttackSound);
   if (gv >= GV_AoEB)

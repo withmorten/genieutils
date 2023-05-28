@@ -18,8 +18,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef GENIE_DEADFISH_H
-#define GENIE_DEADFISH_H
+#ifndef GENIE_TYPE30_H
+#define GENIE_TYPE30_H
 
 #include "genie/file/ISerializable.h"
 
@@ -37,21 +37,21 @@ public:
   virtual ~Moving();
   virtual void setGameVersion(GameVersion gv);
 
-  int16_t WalkingGraphic = -1;
-  int16_t RunningGraphic = -1;
-  float RotationSpeed = 0;
-  uint8_t OldSizeClass = 0;
-  int16_t TrackingUnit = -1;
-  uint8_t TrackingUnitMode = 0;
-  float TrackingUnitDensity = 0;
-  uint8_t OldMoveAlgorithm = 0;
+  int16_t WalkingGraphic = -1; // move_sprite
+  int16_t RunningGraphic = -1; // run_sprite
+  float RotationSpeed = 0; // turn_speed
+  uint8_t OldSizeClass = 0; // size_class
+  int16_t TrackingUnit = -1; // obj_trail_id
+  uint8_t TrackingUnitMode = 0; // obj_trail_options
+  float TrackingUnitDensity = 0; // obj_trail_spacing
+  uint8_t OldMoveAlgorithm = 0; // move_algorithem
 
   // All can change while playing
-  float TurnRadius = 0;
-  float TurnRadiusSpeed = 3.402823466e+38f;
-  float MaxYawPerSecondMoving = 3.402823466e+38f;
-  float StationaryYawRevolutionTime = 0;
-  float MaxYawPerSecondStationary = 3.402823466e+38f;
+  float TurnRadius = 0; // mTurnRadius
+  float TurnRadiusSpeed = 3.402823466e+38f; // mTurnRadiusSpeed
+  float MaxYawPerSecondMoving = 3.402823466e+38f; // mMaximumYawPerSecondMoving
+  float StationaryYawRevolutionTime = 0; // mStationaryYawRevolutionTime
+  float MaxYawPerSecondStationary = 3.402823466e+38f; // mMaximumYawPerSecondStationary
   float MinCollisionSizeMultiplier = 1.0f;
 
 protected:
@@ -62,4 +62,4 @@ protected:
 
 }
 
-#endif // GENIE_DEADFISH_H
+#endif // GENIE_TYPE30_H

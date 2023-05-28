@@ -78,7 +78,9 @@ void Combat::serializeObject(void)
   serialize<int16_t>(AccuracyPercent);
   serialize<uint8_t>(BreakOffCombat); // Not used anymore
   serialize<int16_t>(FrameDelay);
-  serialize<float>(GraphicDisplacement, 3);
+  serialize<float>(GraphicDisplacementX);
+  serialize<float>(GraphicDisplacementY);
+  serialize<float>(GraphicDisplacementZ);
   serialize<uint8_t>(BlastAttackLevel);
   serialize<float>(MinRange);
 

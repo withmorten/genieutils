@@ -24,7 +24,7 @@ namespace genie
 {
 
 //------------------------------------------------------------------------------
-Unit::Unit() : ResourceStorages(3)
+Unit::Unit() : ResourceStoragesType(3, -1), ResourceStoragesAmount(3), ResourceStoragesFlag(3)
 {
 }
 
@@ -79,16 +79,18 @@ void Unit::serializeObject(void)
     }
   }
   serialize<int16_t>(Class);
-  serializePair<int16_t>(StandingGraphic, (gv >= GV_AoKB) ? false : true);
+  serialize<int16_t>(StandingGraphic);
+  if (gv >= GV_AoKB)
+    serialize<int16_t>(StandingGraphic2);
   serialize<int16_t>(DyingGraphic);
   serialize<int16_t>(UndeadGraphic);
   serialize<uint8_t>(UndeadMode);
   serialize<int16_t>(HitPoints);
   serialize<float>(LineOfSight);
   serialize<uint8_t>(GarrisonCapacity);
-  serialize<float>(CollisionSize.x);
-  serialize<float>(CollisionSize.y);
-  serialize<float>(CollisionSize.z);
+  serialize<float>(CollisionSizeX);
+  serialize<float>(CollisionSizeY);
+  serialize<float>(CollisionSizeZ);
   serialize<int16_t>(TrainSound);
   if (gv >= GV_AoKE3)
     serialize<int16_t>(DamageSound);
@@ -106,9 +108,14 @@ void Unit::serializeObject(void)
     serialize<uint8_t>(Disabled);
 
   if (gv >= GV_MIK)
-    serializePair<int16_t>(PlacementSideTerrain);
-  serializePair<int16_t>(PlacementTerrain); // Before AoE, this also contains side terrain.
-  serializePair<float>(ClearanceSize);
+  {
+    serialize<int16_t>(PlacementSideTerrain1);
+    serialize<int16_t>(PlacementSideTerrain2);
+  }
+  serialize<int16_t>(PlacementTerrain1); // Before AoE, this also contains side terrain.
+  serialize<int16_t>(PlacementTerrain2);
+  serialize<float>(ClearanceSizeX);
+  serialize<float>(ClearanceSizeY);
   serialize<uint8_t>(HillMode);
   serialize<uint8_t>(FogVisibility);
   serialize<int16_t>(TerrainRestriction);
@@ -155,9 +162,9 @@ void Unit::serializeObject(void)
 
     serialize<uint8_t>(SelectionEffect);
     serialize<uint8_t>(EditorSelectionColour);
-    serialize<float>(OutlineSize.x);
-    serialize<float>(OutlineSize.y);
-    serialize<float>(OutlineSize.z);
+    serialize<float>(OutlineSizeX);
+    serialize<float>(OutlineSizeY);
+    serialize<float>(OutlineSizeZ);
 
     if (gv >= GV_CK && gv <= GV_LatestDE2)
     {
@@ -169,7 +176,12 @@ void Unit::serializeObject(void)
     }
   }
 
-  serializeSub<ResourceStorage>(ResourceStorages, 3);
+  for (unsigned i=0; i<3; i++)
+  {
+    serialize<int16_t>(ResourceStoragesType[i]);
+    serialize<float>(ResourceStoragesAmount[i]);
+    serialize<uint8_t>(ResourceStoragesFlag[i]);
+  }
 
   uint8_t damage_graphic_count;
   serializeSize<uint8_t>(damage_graphic_count, DamageGraphics.size());

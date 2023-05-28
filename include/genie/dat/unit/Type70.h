@@ -18,8 +18,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef GENIE_CREATABLE_H
-#define GENIE_CREATABLE_H
+#ifndef GENIE_TYPE70_H
+#define GENIE_TYPE70_H
 
 #include "genie/file/ISerializable.h"
 #include "../ResourceUsage.h"
@@ -37,27 +37,25 @@ public:
   virtual ~Tribe_Combat();
   virtual void setGameVersion(GameVersion gv);
 
-  static unsigned short getResourceCostsSize();
-
-  typedef ResourceUsage<int16_t, int16_t, int16_t> ResourceCost;
-
-  std::vector<ResourceCost> ResourceCosts;
-  int16_t TrainTime = 0;
-  int16_t TrainLocationID = -1;
-  uint8_t ButtonID = 0;
-  float RearAttackModifier = 0;
-  float FlankAttackModifier = 0;
-  uint8_t CreatableType = 0;
-  uint8_t HeroMode = 0;
-  int32_t GarrisonGraphic = -1;
-  float TotalProjectiles = 0;
-  uint8_t MaxTotalProjectiles = 0;
+  std::vector<ResourceCost> ResourceCosts; // build_inventory
+  int16_t TrainTime = 0; // build_pts_required
+  int16_t TrainLocationID = -1; // id_of_building_obj
+  uint8_t ButtonID = 0; // button_location
+  float RearAttackModifier = 0; // rear_attack_modifier
+  float FlankAttackModifier = 0; // flank_attack_modifier
+  uint8_t CreatableType = 0; // tribe_unit_type
+  uint8_t HeroMode = 0; // hero_flag
+  int32_t GarrisonGraphic = -1; // garrison_sprite
+  float TotalProjectiles = 0; // volley_fire_amount
+  uint8_t MaxTotalProjectiles = 0; // max_attacks_in_volley
 
   /// The area from which projectiles spawn. Size and randomness.
-  std::vector<float> ProjectileSpawningArea = {0, 0, 0};
+  float ProjectileSpawningAreaX = 0; // volley_x_spread
+  float ProjectileSpawningAreaY = 0; // volley_y_spread
+  float ProjectileSpawningAreaAdjustment = 0; // volley_start_spread_adjustment
 
-  int32_t SecondaryProjectileUnit = -1;
-  int32_t SpecialGraphic = -1;
+  int32_t SecondaryProjectileUnit = -1; // volley_missile_id
+  int32_t SpecialGraphic = -1; // special_attack_sprite_id
 
   //TODO:
   /*
@@ -68,8 +66,8 @@ public:
     wall end piece, but if a wall is placed between two other walls, it will
     have a different graphic.
    */
-  uint8_t SpecialAbility = 0;
-  int16_t DisplayedPierceArmour = 0;
+  uint8_t SpecialAbility = 0; // special_attack_flag
+  int16_t DisplayedPierceArmour = 0; // orig_pierce_armor
   int16_t SpawningGraphic = -1;
   int16_t UpgradeGraphic = -1;
   int16_t HeroGlowGraphic = -1;
@@ -92,4 +90,4 @@ protected:
 
 }
 
-#endif // GENIE_CREATABLE_H
+#endif // GENIE_TYPE70_H

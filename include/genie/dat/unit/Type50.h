@@ -40,35 +40,37 @@ public:
 
   union
   {
-     int16_t BaseArmor = 1000;
+     int16_t BaseArmor = 1000; // base_armor
      uint8_t BaseArmorU8;
   };
-  std::vector<unit::AttackOrArmor> Attacks;
-  std::vector<unit::AttackOrArmor> Armours;
-  int16_t DefenseTerrainBonus = -1;
+  std::vector<unit::AttackOrArmor> Attacks; // weapon
+  std::vector<unit::AttackOrArmor> Armours; // armor
+  int16_t DefenseTerrainBonus = -1; // defense_terrain_bonus
   float BonusDamageResistance = 0;
-  float MaxRange = 0;
-  float BlastWidth = 0;
-  float ReloadTime = 0;
-  int16_t ProjectileUnitID = -1;
+  float MaxRange = 0; // weapon_range
+  float BlastWidth = 0; // area_effect_range
+  float ReloadTime = 0; // speed_of_attack
+  int16_t ProjectileUnitID = -1; // missile_id
 
   /// Percentage value determining the probability of an attack hiting
-  int16_t AccuracyPercent = 0;
+  int16_t AccuracyPercent = 0; // base_hit_chance
 
   /// Used in AoE/RoR for towers.
-  uint8_t BreakOffCombat = 0;
-  int16_t FrameDelay = 0;
+  uint8_t BreakOffCombat = 0; // break_off_combat
+  int16_t FrameDelay = 0; // fire_missile_at_frame
 
-  std::vector<float> GraphicDisplacement = {0, 0, 0};
+  float GraphicDisplacementX = 0; // weapon_offset_x
+  float GraphicDisplacementY = 0; // weapon_offset_y
+  float GraphicDisplacementZ = 0; // weapon_offset_z
 
-  uint8_t BlastAttackLevel = 0;
-  float MinRange = 0;
-  float AccuracyDispersion = 0;
-  int16_t AttackGraphic = -1;
-  int16_t DisplayedMeleeArmour = 0;
-  int16_t DisplayedAttack = 0;
-  float DisplayedRange = 0;
-  float DisplayedReloadTime = 0;
+  uint8_t BlastAttackLevel = 0; // area_effect_level
+  float MinRange = 0; // minimum_weapon_range
+  float AccuracyDispersion = 0; // missed_missile_spread
+  int16_t AttackGraphic = -1; // fight_sprite
+  int16_t DisplayedMeleeArmour = 0; // orig_armor
+  int16_t DisplayedAttack = 0; // orig_weapon
+  float DisplayedRange = 0; // orig_weapon_range
+  float DisplayedReloadTime = 0; // orig_speed_of_attack
   float BlastDamage = 0;
 
 protected:

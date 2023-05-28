@@ -21,7 +21,6 @@
 #ifndef GENIE_RESEARCH_H
 #define GENIE_RESEARCH_H
 #include "genie/file/ISerializable.h"
-#include "ResourceUsage.h"
 
 namespace genie
 {
@@ -41,10 +40,10 @@ public:
   /// The size of the array is 4 in aoe/ror and 6 at games >= aok
   std::vector<int16_t> RequiredTechs;
 
-  typedef ResourceUsage<int16_t, int16_t, uint8_t> ResearchResourceCost;
-
   /// Resource cost in a list of max 3
-  std::vector<ResearchResourceCost> ResourceCosts;
+  std::vector<int16_t> ResourceCostType;
+  std::vector<int16_t> ResourceCostAmount;
+  std::vector<uint8_t> ResourceCostUsed;
 
   /// Holds the number of how much of the required technologies you need.
   int16_t RequiredTechCount = 0;

@@ -59,11 +59,6 @@ enum GameVersion
 const GameVersion GV_LatestTap = GV_T8;
 const GameVersion GV_LatestDE2 = GV_C20;
 
-struct XYZF
-{
-  float x, y, z;
-};
-
 }
 
 #endif //GENIE_TYPES_H
