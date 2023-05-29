@@ -229,7 +229,7 @@ public:
   uint8_t Trait = 0; // object_flags
   /// Seems to be used only in SWGB/CC
   uint8_t Civilization = 0; // object_flags
-  int16_t Nothing = 0; // object_flags
+  uint16_t TraitUnused = 0; // object_flags
 
   /**
    * 1.HP Bar on, selection shadow (permanent darker outline in editor only, disappears in game)

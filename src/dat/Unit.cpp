@@ -150,7 +150,7 @@ void Unit::serializeObject(void)
         {
           serialize<uint8_t>(Trait);
           serialize<uint8_t>(Civilization);
-          serialize<int16_t>(Nothing);
+          serialize<uint16_t>(TraitUnused);
         }
       }
     }
